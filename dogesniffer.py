@@ -1,23 +1,10 @@
 import subprocess
-import re
 import getpass
+import dumper
 
 PACKETS_DUMP = 'packets.pcap'
 interface = ''
 ifconfigData = ''
-
-def getIPv4():
-    ifconfigData = open(IFCONFIG_DUMP).read()
-    s = re.search( r'inet addr:([.,\d]*)', ifconfigData, re.M|re.I)
-    ipv4 = '0'
-    if s:
-    	ipv4 = s.group(1)
-    	print(ipv4)
-    	return ipv4
-    else:
-    	print(interface+': Not connected');
-    	ipConfigDump('usb0')
-    	return getIPv4()
 
 def startSniffing(ip):
 	proc = subprocess.Popen(['sudo','tcpdump','host',ip,'-w',PACKETS_DUMP],stdin=subprocess.PIPE)

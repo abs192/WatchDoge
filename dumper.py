@@ -9,6 +9,11 @@ def checkDumpFiles():
 	open(ARP_DUMP, "a").close()
 	open(IFCONFIG_DUMP, "a").close()
 
+def readIFConfigDump():
+	return open(IFCONFIG_DUMP).read()
+def readARPDump():
+	return open(ARP_DUMP).read()
+
 class Dumper(object):
 
 	def __init__(self):
